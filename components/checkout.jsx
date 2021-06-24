@@ -105,7 +105,6 @@ export default function Signup({navigation}) {
    const [product,setproducts]=useState([]);
    const [userName,setuserName]=useState('');
    const [cardno,setCardno]=useState(0);
-   const [email,setEmail]=useState('');
    const [address,setAddress]=useState('');
    const {total,setTotal}=useCard()
    const timeElapsed = new Date(Date.now()).toLocaleDateString();
@@ -125,7 +124,7 @@ export default function Signup({navigation}) {
    },[])
   const Register = async () => {
     console.log(typeof cardno.length)
-if (userName===""||email===""||address===""||cardno.length<10) {
+if (userName===""||address===""||cardno.length<10) {
   Alert.alert("Kindly fill all the fields");
 }
 else{
@@ -134,7 +133,7 @@ else{
     product:product,
     key:key,
     userName:userName,
-    email:email,
+    email:auth.currentUser.email,
     address:address,
     total:total,
     date: timeElapsed,
@@ -157,17 +156,10 @@ return (
 
       <TextInput
         style={{ width: 300, borderWidth: 2, padding: 5, borderRadius: 10 }}
-        // keyboardType='default'
+        keyboardType='default'
         placeholder="Enter Your Name"
         onChangeText={uname => setuserName(uname)}
         value={userName}
-      />
-       <TextInput
-        style={{ width: 300, borderWidth: 2,marginTop: 15, padding: 5, borderRadius: 10 }}
-        keyboardType='email-address'
-        placeholder="Enter Your Email"
-        onChangeText={emails => setEmail(emails)}
-        value={email}
       /> 
       <TextInput
         style={{ width: 300, borderWidth: 2, padding: 5, marginTop: 15, borderRadius: 10 }}

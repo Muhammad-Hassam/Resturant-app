@@ -43,38 +43,38 @@ export default function Home({navigation}) {
         <View style={styles.main}>
           
             <Card 
-            containerStyle={{ paddingTop:20, paddingBottom:20,borderRadius:30 }} >
+            containerStyle={{ paddingTop:20, paddingBottom:20,borderRadius:15 }} >
                 <Card.Title>Breakfast</Card.Title>
                 <Card.Divider />
-                <Card.Image style={{ borderRadius: 50, width: 260,height:260 }} source={require('../assets/breakfast.png')}></Card.Image>
+                <Card.Image style={{ borderRadius: 10, width: 260,height:260 }} source={require('../assets/breakfast2.jpg')}></Card.Image>
                 <Button
                     buttonStyle={{ borderRadius: 10, marginTop: 10 }}
-                    title='Breakfast'
+                    title='Order Now'
                     onPress={handlebreakfast} 
                     />
             </Card>
          
             <Card 
-             containerStyle={{ paddingTop:20, paddingBottom:20,borderRadius:30 }} >
+             containerStyle={{ paddingTop:20, paddingBottom:20,borderRadius:15 }} >
                 <Card.Title>Lunch</Card.Title>
                 <Card.Divider />
-                <Card.Image style={{ borderRadius: 50, width: 260,height:260 }} source={require('../assets/lunch.png')}></Card.Image>
+                <Card.Image style={{ borderRadius: 10, width: 260,height:260 }} source={require('../assets/lunch2.jpg')}></Card.Image>
                 <Button
                     buttonStyle={{ borderRadius: 10, marginTop: 10  }}
-                    title='Lunch'
+                    title='Order Now'
                     onPress={handleLunch}
                     />
                     
             </Card>
 
             <Card 
-             containerStyle={{ paddingTop:20, paddingBottom:20, paddingLeft: 10, paddingRight:10,borderRadius:30, marginBottom:70 }} >
+             containerStyle={{ paddingTop:20, paddingBottom:20, paddingLeft: 10, paddingRight:10,borderRadius:15, marginBottom:70 }} >
                 <Card.Title>Dinner</Card.Title>
                 <Card.Divider />
-                <Card.Image style={{ borderRadius: 50, width: 260,height:260 }} source={require('../assets/dinner.png')}></Card.Image>
+                <Card.Image style={{ borderRadius: 10, width: 260,height:260 }} source={require('../assets/dinner2.jpg')}></Card.Image>
                 <Button
                     buttonStyle={{ borderRadius: 10, marginTop: 10  }}
-                    title='Dinner'
+                    title='Order Now'
                     onPress={handleDinner}
                     />
                     
@@ -90,13 +90,10 @@ export default function Home({navigation}) {
     );
 }
 const styles = StyleSheet.create({
- 
     main: {
       marginTop:20,
       marginBottom:20,
      alignItems: 'center',
     justifyContent: 'center',
     },
-    
-   
 });

@@ -16,7 +16,7 @@ export default function App() {
     </CardProvider>
   );
 }
-
+// #EBF5FB
 const styles = StyleSheet.create({
   container: {
     flex: 1,

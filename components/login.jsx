@@ -23,6 +23,12 @@ export default function Login({navigation}) {
     if(auth.currentUser.email==="admin@gmail.com"){
      navigation.navigate("Admindashboard")
    }
+   else if(auth.currentUser.email==="kitchen@gmail.com"){
+    navigation.navigate("Kitchenmanager")
+   }
+   else if(auth.currentUser.email==="rider@gmail.com"){
+    navigation.navigate("Rider")
+   }
    else{
     navigation.navigate("home");
    }

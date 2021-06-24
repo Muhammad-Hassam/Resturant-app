@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
 import { View, StyleSheet, TextInput, Text ,Alert} from 'react-native'
 import { Button,Header } from 'react-native-elements'
-// import { auth } from "../config/firebase";
 import { useCard } from '../config/context';
-import Icon from 'react-native-vector-icons/FontAwesome';
 import {auth} from '../config/firebase';
-
+import Head from './header'
 export default function Signup({navigation}) {
 
  const [email,setEmail]=useState("")
@@ -39,43 +37,7 @@ const handleSignup=()=>{
 
 return (
     <>
-        <Header
-        style={{paddingTop:30}}
-  centerComponent={{ text: 'Resturant App', style: { color: '#fff' } }}
-  rightComponent={<><Icon
-    name="shopping-cart"
-    type="antdesign"
-    color={"#FFFFFF"}
-    size={22}
-    containerStyle={{marginHorizontal: 15, position: 'relative'}}
-    onPress={handlecart}
-  />   
-  {count > 0 ? (
-    <View
-      style={{
-        position: 'absolute',
-        backgroundColor: 'red',
-        width: 16,
-        height: 16,
-        borderRadius: 15 / 2,
-        right: 10,
-        top: +10,
-        alignItems: 'center',
-        justifyContent: 'center',
-      }}>
-      <Text
-        style={{
-          alignItems: 'center',
-          justifyContent: 'center',
-          color: "#FFFFFF",
-          fontSize: 8,
-        }}>
-        {count}
-      </Text>
-    </View>
-  ) : null}
-  </>}
-/>
+   <Head/>
     <View style={styles.container}>
     <View style={styles.main}>
       <Text style={styles.login}>SignUp</Text>

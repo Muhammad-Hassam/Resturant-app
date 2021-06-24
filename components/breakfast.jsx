@@ -46,10 +46,10 @@ export default function Dinner({navigation}) {
                return(
                 <Card 
                 key={index}
-                containerStyle={{ paddingTop:20, paddingBottom:20, paddingLeft: 10, paddingRight:10,borderRadius:30}} >
+                containerStyle={{ paddingTop:20, paddingBottom:20, paddingLeft: 10, paddingRight:10,borderRadius:15}} >
                     <Card.Title>{item.name}</Card.Title>
                     <Card.Divider />
-                    <Card.Image style={{ borderRadius: 50, width: 250,height:200 }} source={{uri:item.imageURL}}></Card.Image>
+                    <Card.Image style={{ borderRadius: 10, width: 250,height:200 }} source={{uri:item.imageURL}}></Card.Image>
                     <Text style={styles.description}>Description: {item.description}</Text>
                     <Text style={styles.price}>Price: {item.price} PKR</Text>
                     <Button

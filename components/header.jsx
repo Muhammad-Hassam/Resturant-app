@@ -62,15 +62,18 @@ export default function head(){
         return(
           <Header
           style={{paddingTop:30}}
-          leftComponent={<Icon
-              name="logout"
-              type="antdesign"
+          leftComponent={  <>
+          <Icon
+              name="power-off"
+              type="font-awesome"
               color={"#FFFFFF"}
-              size={22}
+              size={23}
               containerStyle={{marginHorizontal: 15, position: 'relative'}}
              onPress={()=>logout()}
-            />   }
-    centerComponent={{ text: 'Marito Resturant', style: { color: '#fff' } }}
+            />  
+ 
+            </> }
+    centerComponent={{ text: 'Marito Resturant', style: { color: '#fff',fontSize:20 } }}
     rightComponent={
       <View style={{ flexDirection: "row",flexWrap: "wrap"}}>
         <View style={{flex:0.5}}>

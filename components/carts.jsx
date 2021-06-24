@@ -24,7 +24,6 @@ export default function ({navigation}) {
                     });
                   }
                   setPrice(i);
-
             }
             else {
                 setdata([])
@@ -70,9 +69,9 @@ export default function ({navigation}) {
       const handleRemove=(key)=>{
         database.ref("/Food").child('orders/' + auth.currentUser.uid).child(key).remove();
       }
+if(data.length>0){
     return (
         <>
-            <Head />
             <View style={styles.container}>
                 <ScrollView>
                     <View style={styles.main}>
@@ -85,12 +84,12 @@ export default function ({navigation}) {
                                 <Card.Title>{item.name}</Card.Title>
                                 <Card.Divider />
                                 <Card.Image style={{ borderRadius: 50, width: 250,height:200 }} source={{uri:item.imageURL}}></Card.Image>
-                                <Text style={{marginTop:10}}>Order for: {item.type}</Text>
-                        <Text style={styles.description}>Description: {item.description}</Text>
-                        <Text >Price: {item.price} PKR</Text> 
+                                <Text style={{marginTop:10}}><Text style={{fontWeight:'bold'}}>Order for:</Text> {item.type}</Text>
+                        <Text style={styles.description}><Text style={{fontWeight:'bold'}}>Description:</Text> {item.description}</Text>
+                        <Text><Text style={{fontWeight:'bold'}}>Price:</Text> {item.price} PKR</Text> 
                                 <Text style={{ textAlign: 'center',marginTop:3 }}>
                                 <Button
-                                        buttonStyle={{ borderRadius: 10, marginTop: 10, paddingLeft: 20, paddingRight: 20 }}
+                                        buttonStyle={{ borderRadius: 10, marginTop: 10, paddingLeft: 11, paddingRight: 11,marginRight:10, }}
                                         title='-'
                                         onPress={()=>quanityDec({
                                             key:item.key,
@@ -99,7 +98,7 @@ export default function ({navigation}) {
                                     /> 
                                     <Text style={{ fontSize: 40}}>{item.quantity}</Text>
                                       <Button
-                                        buttonStyle={{ borderRadius: 10, marginTop: 10,paddingLeft: 20, paddingRight: 20 }}
+                                        buttonStyle={{ borderRadius: 10, marginTop: 10,paddingLeft: 10, paddingRight: 10,marginLeft:10, }}
                                         title='+'
                                     onPress={()=>quanityInc({
                                         key:item.key,
@@ -133,12 +132,25 @@ export default function ({navigation}) {
         </>
     );
 }
+else{
+    return(
+        <>
+            <Head />
+        <View  style={{ justifyContent: 'center',
+       alignItems: 'center',
+       flex:1}}>
+    <Text style={{fontWeight:'bold', fontSize:40,color:"gray"}}>No Carts Available</Text>
+        </View>
+        </>
+    )
+}
+}
 const styles = StyleSheet.create({
     container: {
         flex: 1,
     },
     main: {
-        marginTop: 20,
+        marginTop: 45,
         marginBottom: 20,
         alignItems: 'center',
         justifyContent: 'center',

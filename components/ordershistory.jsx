@@ -26,7 +26,7 @@ useEffect(()=>{
 },[])
 
 const handleupdate=(data)=>{
-  if(data,status==="Not Delivered"){
+  if(data.status==="Not Delivered"){
     database.ref('/Food').child('Orders'+"/"+data.userid+"/"+data.key).remove()
     console.log(data.key,data.userid)
     Alert.alert('Order has been cancel');

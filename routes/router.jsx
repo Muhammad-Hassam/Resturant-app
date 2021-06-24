@@ -15,8 +15,10 @@ import Admindashboard from '../components/admindashboard';
 import Allitems from '../components/allitems'
 import Carts from '../components/carts';
 import Head from "../components/header";
-import Adminorders from '../components/adminoorders'
-import Orderdetails from '../components/ordersdetail'
+import Adminorders from '../components/adminoorders';
+import Kitchenmanager from '../components/kitchenmanager';
+import Rider from '../components/rider'
+import Orderdetails from '../components/ordersdetail';
 const Stack=createStackNavigator();
 
 export default function Navigations(){
@@ -39,7 +41,8 @@ export default function Navigations(){
             <Stack.Screen name="Admindashboard" component={Admindashboard} options={{headerShown: false,}}/>
             <Stack.Screen name="Orderdetails" component={Orderdetails} options={{headerShown: false,}}/>
             <Stack.Screen name="Adminorders" component={Adminorders} options={{headerShown: false,}}/>
-
+            <Stack.Screen name="Kitchenmanager" component={Kitchenmanager} options={{headerShown: false,}}/>
+            <Stack.Screen name="Rider" component={Rider} options={{headerShown: false,}}/>
             </Stack.Navigator>
         </NavigationContainer>
         );
