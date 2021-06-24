@@ -98,7 +98,8 @@ export default function head(){
       <View
         style={{
           position: 'absolute',
-          backgroundColor: 'red',
+          backgroundColor: '#000',
+
           width: 16,
           height: 16,
           borderRadius: 15 / 2,
@@ -134,7 +135,7 @@ export default function head(){
               containerStyle={{marginHorizontal: 15, position: 'relative'}}
              onPress={()=>loginPage()}
             />   }
-    centerComponent={{ text: 'Marito Resturant', style: { color: '#fff' } }}
+    centerComponent={{ text: 'Marito Resturant', style: { color: '#fff',fontSize:20  } }}
     rightComponent={
       <View style={{ flexDirection: "row",flexWrap: "wrap"}}>
         <View style={{flex:1}}>
@@ -149,7 +150,7 @@ export default function head(){
       <View
         style={{
           position: 'absolute',
-          backgroundColor: 'red',
+          backgroundColor: 'skyblue',
           width: 16,
           height: 16,
           borderRadius: 15 / 2,

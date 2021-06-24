@@ -4,16 +4,24 @@ import { StyleSheet, Text, View } from 'react-native';
 import 'react-native-gesture-handler';
 import Navigations from './routes/router';
 import {CardProvider} from './config/context';
+import { ThemeProvider } from 'react-native-elements';
 LogBox.ignoreLogs(['Setting a timer']);
 
 // https://www.npmjs.com/package/@agaweb/react-native-stripe
 
 
 export default function App() {
+  const theme = {
+    colors: {
+      primary:'#d70b65',
+    }
+  }
   return (
+    <ThemeProvider theme={theme} >
     <CardProvider>
     <Navigations/>
     </CardProvider>
+    </ThemeProvider>
   );
 }
 // #EBF5FB
