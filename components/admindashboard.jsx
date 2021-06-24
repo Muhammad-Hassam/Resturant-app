@@ -7,6 +7,7 @@ import {Header} from 'react-native-elements';
 import { useCard } from '../config/context';
 import { color } from 'react-native-elements/dist/helpers';
 import { auth } from '../config/firebase';
+import Head from './header'
 
 
 // import { auth } from "../config/firebase";
@@ -22,7 +23,7 @@ export default function Admindashboard({navigation}) {
       navigation.navigate('Allitems')
     }
     const handleorders= () => {
-            navigation.navigate('Orders')
+            navigation.navigate('Adminorders')
     }
     const handlecart=()=>{
         auth.onAuthStateChanged((user) => {
@@ -40,51 +41,7 @@ export default function Admindashboard({navigation}) {
   }
     return (
         <>
-        <Header
-        style={{paddingTop:30}}
-        leftComponent={<Icon
-            name="user"
-            type="antdesign"
-            color={"#FFFFFF"}
-            size={22}
-            containerStyle={{marginHorizontal: 15, position: 'relative'}}
-            onPress={loginPage}
-          />   }
-  centerComponent={{ text: 'Resturant App', style: { color: '#fff' } }}
-  rightComponent={<><Icon
-    name="shopping-cart"
-    type="antdesign"
-    color={"#FFFFFF"}
-    size={22}
-    containerStyle={{marginHorizontal: 15, position: 'relative'}}
-    onPress={handlecart}
-  />   
-  {count > 0 ? (
-    <View
-      style={{
-        position: 'absolute',
-        backgroundColor: 'red',
-        width: 16,
-        height: 16,
-        borderRadius: 15 / 2,
-        right: 10,
-        top: +10,
-        alignItems: 'center',
-        justifyContent: 'center',
-      }}>
-      <Text
-        style={{
-          alignItems: 'center',
-          justifyContent: 'center',
-          color: "#FFFFFF",
-          fontSize: 8,
-        }}>
-        {count}
-      </Text>
-    </View>
-  ) : null}
-  </>}
-/>
+      <Head/>
         <View >
 
             <ScrollView>

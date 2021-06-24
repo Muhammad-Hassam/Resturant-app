@@ -138,6 +138,7 @@ else{
     address:address,
     total:total,
     date: timeElapsed,
+    userid:auth.currentUser.uid,
     status: 'Not Delivered',
   })
   Alert.alert("Your Order Placed SuccessFully");
@@ -177,7 +178,7 @@ return (
       />
        <TextInput
         style={{ width: 300, borderWidth: 2, padding: 5, marginTop: 15, borderRadius: 10 }}
-        keyboardType='numeric'
+        keyboardType="number-pad"
         placeholder="Enter Your Card No"
         onChangeText={card => setCardno(card)}
         value={cardno}

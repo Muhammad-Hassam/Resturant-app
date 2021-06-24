@@ -21,7 +21,7 @@ export default function Dinner({navigation}) {
        quantity:1,
       imageURL: product.imageURL,
         }).then(()=>{
-          Alert.alert("Item added into cart");
+          console.log("success");
         }).catch((err)=>{
           Alert.alert(err)
         })

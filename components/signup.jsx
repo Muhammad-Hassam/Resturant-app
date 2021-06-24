@@ -12,6 +12,7 @@ export default function Signup({navigation}) {
  const [password,setPassword]=useState("")
  const [count,setcount]=useState(0)
  const {user}=useCard();
+ const [loader,setloader]=useState(false);
 
 
 const handlecart=()=>{
@@ -24,9 +25,11 @@ const handlecart=()=>{
 }
 
 const handleSignup=()=>{
+  setloader(true)
   auth
         .createUserWithEmailAndPassword(email, password)
         .then((auth) => {
+   setloader(false)
           navigation.navigate("login")
           
         })
@@ -94,6 +97,7 @@ return (
       <Button
         buttonStyle={{ borderRadius: 10, marginTop: 25, paddingLeft: 30, paddingRight: 30 }}
         title="Signup"
+        loading={loader}
         onPress={handleSignup}
       />
 </View>

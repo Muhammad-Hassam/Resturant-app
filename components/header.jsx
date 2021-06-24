@@ -9,11 +9,12 @@ export default function head(){
     const navigation = useNavigation(); 
     const [count,setcount]=useState([])
     const {user,setUser}=useCard();
-    
+    const [login,setlogin]=useState(false)
 
     useEffect(()=>{
       auth.onAuthStateChanged((user)=>{
         if(user){
+          setlogin(true)
             database.ref("/Food").child('orders/' + auth.currentUser.uid).on('value', snapshot=>{
         if(snapshot.exists()){
           setcount(Object.values(snapshot.val()))
@@ -31,14 +32,9 @@ export default function head(){
       console.log('cleanup')
     }
     },[])
-    const loginPage=()=>{    
-            if(user===true){
-                auth.signOut();
-                Alert.alert('Logout SuccessFully');
-            }
-            else{
+    const loginPage=()=>{               
                 navigation.navigate('login')                
-            }
+
         }
     const handlecart=()=>{
         auth.onAuthStateChanged((user) => {
@@ -52,66 +48,127 @@ export default function head(){
       }
 
       const handlehistory=()=>{
-        auth.onAuthStateChanged((user) => {
-          if(user){
         navigation.navigate('OrderHistory')
-          }
-          else{
-              navigation.navigate('login')
-          }
-      })
+    }
+
+      const logout=()=>{
+        auth.signOut();
+        Alert.alert('You have signout')
+        navigation.navigate('login');
+        setlogin(false);
       }
-    return(
-        <Header
-        style={{paddingTop:30}}
-        leftComponent={<Icon
-            name="user"
-            type="antdesign"
-            color={"#FFFFFF"}
-            size={22}
-            containerStyle={{marginHorizontal: 15, position: 'relative'}}
-           onPress={()=>loginPage()}
-          />   }
-  centerComponent={{ text: 'Resturant App', style: { color: '#fff' } }}
-  rightComponent={<Text>
-  <Icon
-    name="list"
-    type="font-awesome"
-    color={"#FFFFFF"}
-    size={22}
-    containerStyle={{marginRight:10}}
-    onPress={handlehistory}
-  />
-  <Icon
-    name="shoppingcart"
-    type="antdesign"
-    color={"#FFFFFF"}
-    size={22}
-    onPress={handlecart}
-  />   
-  {count.length > 0 ? (
-    <View
-      style={{
-        position: 'absolute',
-        backgroundColor: 'red',
-        width: 16,
-        height: 16,
-        borderRadius: 15 / 2,
-        alignItems: 'center',
-        justifyContent: 'center',
-      }}>
-      <Text
+
+      if(login===true){
+        return(
+          <Header
+          style={{paddingTop:30}}
+          leftComponent={<Icon
+              name="logout"
+              type="antdesign"
+              color={"#FFFFFF"}
+              size={22}
+              containerStyle={{marginHorizontal: 15, position: 'relative'}}
+             onPress={()=>logout()}
+            />   }
+    centerComponent={{ text: 'Marito Resturant', style: { color: '#fff' } }}
+    rightComponent={
+      <View style={{ flexDirection: "row",flexWrap: "wrap"}}>
+        <View style={{flex:0.5}}>
+        <Icon
+      name="list"
+      type="font-awesome"
+      color={"#FFFFFF"}
+      size={22}
+      containerStyle={{marginRight:10}}
+      onPress={handlehistory}
+    />
+        </View>
+        <View style={{flex:0.5}}>
+        <Icon
+      name="shoppingcart"
+      type="antdesign"
+      color={"#FFFFFF"}
+      size={22}
+      onPress={handlecart}
+    />   
+    {count.length > 0 ? (
+      <View
         style={{
+          position: 'absolute',
+          backgroundColor: 'red',
+          width: 16,
+          height: 16,
+          borderRadius: 15 / 2,
           alignItems: 'center',
           justifyContent: 'center',
-          color: "#FFFFFF",
-          fontSize: 10,
         }}>
-        {count.length}
-      </Text>
-    </View>
-  ) : null}
-  </Text>}
-/>
-    )
+        <Text
+          style={{
+            alignItems: 'center',
+            justifyContent: 'center',
+            color: "#FFFFFF",
+            fontSize: 10,
+          }}>
+          {count.length}
+        </Text>
+      </View>
+    ) : null}      
+        </View>
+      </View>
+    }
+  />
+      )
+      }
+      else{
+        return(
+          <Header
+          style={{paddingTop:30}}
+          leftComponent={<Icon
+              name="user"
+              type="antdesign"
+              color={"#FFFFFF"}
+              size={22}
+              containerStyle={{marginHorizontal: 15, position: 'relative'}}
+             onPress={()=>loginPage()}
+            />   }
+    centerComponent={{ text: 'Marito Resturant', style: { color: '#fff' } }}
+    rightComponent={
+      <View style={{ flexDirection: "row",flexWrap: "wrap"}}>
+        <View style={{flex:1}}>
+        <Icon
+      name="shoppingcart"
+      type="antdesign"
+      color={"#FFFFFF"}
+      size={22}
+      onPress={handlecart}
+    />   
+    {count.length > 0 ? (
+      <View
+        style={{
+          position: 'absolute',
+          backgroundColor: 'red',
+          width: 16,
+          height: 16,
+          borderRadius: 15 / 2,
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}>
+        <Text
+          style={{
+            alignItems: 'center',
+            justifyContent: 'center',
+            color: "#FFFFFF",
+            fontSize: 10,
+          }}>
+          {count.length}
+        </Text>
+      </View>
+    ) : null}      
+        </View>
+      </View>
+    }
+  />
+      )
+      }
+
 }

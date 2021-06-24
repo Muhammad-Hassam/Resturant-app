@@ -21,7 +21,6 @@ export default function Home({navigation}) {
       }
     })
 }, [])
-console.log(data)
     const handlebreakfast = () => {
         
         navigation.navigate('Breakfast')

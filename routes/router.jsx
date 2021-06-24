@@ -15,6 +15,7 @@ import Admindashboard from '../components/admindashboard';
 import Allitems from '../components/allitems'
 import Carts from '../components/carts';
 import Head from "../components/header";
+import Adminorders from '../components/adminoorders'
 import Orderdetails from '../components/ordersdetail'
 const Stack=createStackNavigator();
 
@@ -37,6 +38,8 @@ export default function Navigations(){
             <Stack.Screen name="Head" component={Head} options={{headerShown: false,}}/>
             <Stack.Screen name="Admindashboard" component={Admindashboard} options={{headerShown: false,}}/>
             <Stack.Screen name="Orderdetails" component={Orderdetails} options={{headerShown: false,}}/>
+            <Stack.Screen name="Adminorders" component={Adminorders} options={{headerShown: false,}}/>
+
             </Stack.Navigator>
         </NavigationContainer>
         );

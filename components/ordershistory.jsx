@@ -5,6 +5,7 @@ import { ScrollView } from 'react-native-gesture-handler';
 import Head from './header'
 import { auth, database } from "../config/firebase";
 import { useEffect,useState } from 'react';
+import { Alert } from 'react-native';
 
 export default function OrderHistory({navigation}) {
    
@@ -23,7 +24,18 @@ useEffect(()=>{
     console.log("cleanup")
   }
 },[])
-console.log(data)
+
+const handleupdate=(data)=>{
+  if(data,status==="Not Delivered"){
+    database.ref('/Food').child('Orders'+"/"+data.userid+"/"+data.key).remove()
+    console.log(data.key,data.userid)
+    Alert.alert('Order has been cancel');
+  }
+  else{
+    Alert.alert('Your Order Has been Delivered');
+  }
+
+}
 
     return (
         <>
@@ -49,11 +61,12 @@ console.log(data)
         </TouchableOpacity>
         </View>
         <View style={{flex:0.3}}> 
-         <Button
-              buttonStyle={{ borderRadius: 10, marginTop: 20 }}
-              title="Cancel"
-              // onPress={upload}
-            /></View>
+         {data.status==='Not Delivered'?  <Button
+                       buttonStyle={{ borderRadius: 10, marginTop: 20 }}
+                       title="Cancel"
+                       onPress={()=>handleupdate(data)}
+                     />:null}
+      </View>
       </View>
        
       </ListItem>

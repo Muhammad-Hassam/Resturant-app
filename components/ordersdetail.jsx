@@ -8,23 +8,6 @@ import { auth,database } from '../config/firebase';
 import Head from "./header";
 export default function Orderdetails({ route }) {
   const {alldata}=route.params;
-     const [data,setdata]=useState({})
-
-     useEffect(()=>{
-         console.log(alldata.key)
-        database.ref('/Food').child('Orders'+'/'+auth.currentUser.uid+'/'+alldata.key).on('value',snapshot=>{
-          if(snapshot.exists()){
-           setdata(Object.values(snapshot.val()))
-          }
-          else{
-            setdata([])
-          }
-        })
-        return()=>{
-          console.log("cleanup")
-        }
-      },[])
-console.log(data)
     return (
         <>
  <Head/>
@@ -32,33 +15,26 @@ console.log(data)
             <ScrollView>
         <View style={styles.main}>
           <Text style={styles.breakfast}>Detail</Text>
-           {!!Object.keys(data).length &&
-                Object.keys(data).map((product, index)=>(
-    <Card key={product}
+           {!!Object.keys(alldata).length &&
+           <Card 
                 containerStyle={{borderRadius:30}} >
-                    <Text style={styles.description}>Delievery Address:{data[product].address} </Text>
-                    <Text style={styles.description}>Total Price:{data[product].total}PKR </Text>
-                    {Object.keys(data[product].products).map((prod) => (
+                    <Text style={styles.description}>Delievery Address:{alldata.address} </Text>
+                    <Text style={styles.description}>Total Price:{alldata.total}PKR </Text>
+                    {Object.keys(alldata?.product).map((prodKey) => (
                           <Card 
-                          key={index}
+                          key={prodKey}
                           containerStyle={{ paddingTop:20, paddingBottom:20}} >
-                              <Card.Title>{data[product].products[prod].name} </Card.Title>
+                              <Card.Title>{alldata?.product[prodKey].name} </Card.Title>
                               <Card.Divider />
-                              <Card.Image style={{ borderRadius: 50, width: 250,height:200 }} source={{uri:item.imageURL}}></Card.Image>
-                              <Text style={styles.description}>Description: {item.description}</Text>
-                              <Text style={styles.price}>Price: {item.price} PKR</Text>
-          
+                              <Card.Image style={{ borderRadius: 50, width: 250,height:200 }} source={{uri:alldata?.product[prodKey].imageURL}}></Card.Image>
+                              <Text style={styles.description}>Description: {alldata?.product[prodKey].description}</Text>
+                              <Text style={styles.price}>Price: {alldata?.product[prodKey].price} PKR</Text>
+                              <Text style={styles.price}>Quantity: {alldata?.product[prodKey].quantity}</Text>
                           </Card>
                     ))} 
-                </Card>
-               
-                )
-               
-            
-           )}
-          
-      
-        </View>
+                </Card>                     
+    }
+              </View>
         </ScrollView>
         </View>
         </>
