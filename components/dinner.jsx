@@ -4,6 +4,7 @@ import { Card, Button} from 'react-native-elements'
 import { ScrollView } from 'react-native-gesture-handler';
 import { useCard } from '../config/context';
 import Head from "./header";
+import Rating from './rating'
 import { auth,database } from '../config/firebase';
 export default function Dinner({navigation}) {
   const {data}=useCard()
@@ -53,6 +54,7 @@ export default function Dinner({navigation}) {
                     <Card.Image style={{ borderRadius: 10, width: 250,height:200 }} source={{uri:item.imageURL}}></Card.Image>
                     <Text style={styles.description}>Description: {item.description}</Text>
                     <Text style={styles.price}>Price: {item.price} PKR</Text>
+                    <Rating/>
                     <Button
                         buttonStyle={{ borderRadius: 10, marginTop: 10 }}
                         title='AddtoCart'

@@ -48,10 +48,10 @@ export default function Admindashboard({navigation}) {
         <View style={styles.main}>
           <Text style={{fontSize:35,textDecorationLine:"underline"}}>Admin Dashboard</Text>
           <Card 
-            containerStyle={{  paddingTop:20, paddingBottom:20,borderRadius:30 }} >
+            containerStyle={{  paddingTop:20, paddingBottom:20,borderRadius:15 }} >
                 <Card.Title>All Items</Card.Title>
                 <Card.Divider />
-                <Card.Image style={{ borderRadius: 50, width: 260,height:260 }} source={require('../assets/allitems.png')}></Card.Image>
+                <Card.Image style={{ borderRadius: 10, width: 260,height:260 }} source={require('../assets/allitems.jpg')}></Card.Image>
                 <Button
                     buttonStyle={{ borderRadius: 10, marginTop: 10 }}
                     title='Items'
@@ -59,10 +59,10 @@ export default function Admindashboard({navigation}) {
                     />
             </Card>
             <Card 
-            containerStyle={{  paddingTop:20, paddingBottom:20,borderRadius:30 }} >
+            containerStyle={{  paddingTop:20, paddingBottom:20,borderRadius:15 }} >
                 <Card.Title>Add Items</Card.Title>
                 <Card.Divider />
-                <Card.Image style={{ borderRadius: 50, width: 260,height:260 }} source={require('../assets/items.png')}></Card.Image>
+                <Card.Image style={{ borderRadius: 10, width: 260,height:260 }} source={require('../assets/items.jpg')}></Card.Image>
                 <Button
                     buttonStyle={{ borderRadius: 10, marginTop: 10 }}
                     title='Add Items'
@@ -71,10 +71,10 @@ export default function Admindashboard({navigation}) {
             </Card>
          
             <Card 
-             containerStyle={{ paddingTop:20, paddingBottom:20,borderRadius:30, marginBottom:70 }} >
+             containerStyle={{ paddingTop:20, paddingBottom:20,borderRadius:15, marginBottom:70 }} >
                 <Card.Title>Orders</Card.Title>
                 <Card.Divider />
-                <Card.Image style={{ borderRadius: 50, width: 260,height:260 }} source={require('../assets/orders.png')}></Card.Image>
+                <Card.Image style={{ borderRadius: 10, width: 260,height:260 }} source={require('../assets/orders.jpg')}></Card.Image>
                 <Button
                     buttonStyle={{ borderRadius: 10, marginTop: 10  }}
                     title='Orders'

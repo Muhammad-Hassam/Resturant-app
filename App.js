@@ -1,6 +1,6 @@
 import React from 'react';
 import { LogBox } from 'react-native';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet} from 'react-native';
 import 'react-native-gesture-handler';
 import Navigations from './routes/router';
 import {CardProvider} from './config/context';

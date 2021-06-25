@@ -3,8 +3,9 @@ import { View, StyleSheet, Text,Alert} from 'react-native'
 import { Card, Button} from 'react-native-elements'
 import { ScrollView } from 'react-native-gesture-handler';
 import Head from './header';
-import { useCard } from "../config/context";
-import {database} from '../config/firebase'
+import {useCard} from "../config/context";
+import {database} from '../config/firebase';
+import Rating from './rating';
 
 
 export default function Home({navigation}) {
@@ -47,6 +48,7 @@ export default function Home({navigation}) {
                 <Card.Title>Breakfast</Card.Title>
                 <Card.Divider />
                 <Card.Image style={{ borderRadius: 10, width: 260,height:260 }} source={require('../assets/breakfast2.jpg')}></Card.Image>
+                <Rating/>
                 <Button
                     buttonStyle={{ borderRadius: 10, marginTop: 10 }}
                     title='Order Now'
@@ -59,19 +61,19 @@ export default function Home({navigation}) {
                 <Card.Title>Lunch</Card.Title>
                 <Card.Divider />
                 <Card.Image style={{ borderRadius: 10, width: 260,height:260 }} source={require('../assets/lunch2.jpg')}></Card.Image>
+                <Rating/>
                 <Button
                     buttonStyle={{ borderRadius: 10, marginTop: 10  }}
                     title='Order Now'
                     onPress={handleLunch}
-                    />
-                    
+                    /> 
             </Card>
-
             <Card 
              containerStyle={{ paddingTop:20, paddingBottom:20, paddingLeft: 10, paddingRight:10,borderRadius:15, marginBottom:70 }} >
                 <Card.Title>Dinner</Card.Title>
                 <Card.Divider />
                 <Card.Image style={{ borderRadius: 10, width: 260,height:260 }} source={require('../assets/dinner2.jpg')}></Card.Image>
+                <Rating/>
                 <Button
                     buttonStyle={{ borderRadius: 10, marginTop: 10  }}
                     title='Order Now'
