@@ -6,6 +6,7 @@ export const CardProvider = ({ children }) => {
   const [user, setUser] = useState(false);
   const [data,setdata]=useState([])
   const [total,setTotal]=useState(0)
+  const [rate,setRate]=useState(false)
 
   
 useEffect(() => {
@@ -24,6 +25,8 @@ useEffect(() => {
     user:user,
     data:data,
     total:total,
+    rate:rate,
+    setRate,
     setTotal,
     setdata,
     setUser,

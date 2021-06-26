@@ -8,7 +8,7 @@ const Rating = () => {
     const starImageFilled = 'https://github.com/tranhonghan/images/blob/main/star_filled.png?raw=true';
     const starImageCorner = 'https://raw.githubusercontent.com/tranhonghan/images/main/star_corner.png';
 
-
+    
     const CustomRatingBar = () => {
         return (
             <View style={styles.customRatingBarStyle}>

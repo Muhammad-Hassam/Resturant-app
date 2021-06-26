@@ -12,7 +12,7 @@ export default function Login({navigation}) {
  const [email,setEmail]=useState("")
  const [password,setPassword]=useState("")
  const [count,setcount]=useState(0)
- const {user, setUser}=useCard();
+ const {user, setUser,rate,setRate}=useCard();
  const [loader,setloader]=useState(false);
 
  const handleLogin=()=>{
@@ -20,6 +20,7 @@ export default function Login({navigation}) {
    auth.signInWithEmailAndPassword(email,password)
    .then(() =>{
    setloader(false)
+   setRate(true);
     if(auth.currentUser.email==="admin@gmail.com"){
      navigation.navigate("Admindashboard")
    }

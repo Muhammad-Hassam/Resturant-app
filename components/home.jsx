@@ -4,13 +4,12 @@ import { Card, Button} from 'react-native-elements'
 import { ScrollView } from 'react-native-gesture-handler';
 import Head from './header';
 import {useCard} from "../config/context";
-import {database} from '../config/firebase';
+import {database,auth} from '../config/firebase';
 import Rating from './rating';
 
 
 export default function Home({navigation}) {
-  const {data,setdata}=useCard();
-
+  const {data,setdata,rate,setRate}=useCard();
 
   useEffect(() => {
     database.ref("/Food").child('items').on('value', snapshot => {
@@ -39,7 +38,6 @@ export default function Home({navigation}) {
         <>
   <Head/>
         <View >
-
             <ScrollView>
         <View style={styles.main}>
           
@@ -48,7 +46,7 @@ export default function Home({navigation}) {
                 <Card.Title>Breakfast</Card.Title>
                 <Card.Divider />
                 <Card.Image style={{ borderRadius: 10, width: 260,height:260 }} source={require('../assets/breakfast2.jpg')}></Card.Image>
-                <Rating/>
+                {rate===true?<Rating/>:<Text>Rating: 3.5</Text>}
                 <Button
                     buttonStyle={{ borderRadius: 10, marginTop: 10 }}
                     title='Order Now'
@@ -61,7 +59,7 @@ export default function Home({navigation}) {
                 <Card.Title>Lunch</Card.Title>
                 <Card.Divider />
                 <Card.Image style={{ borderRadius: 10, width: 260,height:260 }} source={require('../assets/lunch2.jpg')}></Card.Image>
-                <Rating/>
+                {rate===true?<Rating/>:<Text>Rating: 3.5</Text>}
                 <Button
                     buttonStyle={{ borderRadius: 10, marginTop: 10  }}
                     title='Order Now'
@@ -73,7 +71,7 @@ export default function Home({navigation}) {
                 <Card.Title>Dinner</Card.Title>
                 <Card.Divider />
                 <Card.Image style={{ borderRadius: 10, width: 260,height:260 }} source={require('../assets/dinner2.jpg')}></Card.Image>
-                <Rating/>
+                {rate===true?<Rating/>:<Text>Rating: 3.5</Text>}
                 <Button
                     buttonStyle={{ borderRadius: 10, marginTop: 10  }}
                     title='Order Now'

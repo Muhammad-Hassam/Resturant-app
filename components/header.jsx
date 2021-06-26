@@ -8,7 +8,7 @@ import { useNavigation } from '@react-navigation/native';
 export default function head(){
     const navigation = useNavigation(); 
     const [count,setcount]=useState([])
-    const {user,setUser}=useCard();
+    const {user,setUser,rate,setRate}=useCard();
     const [login,setlogin]=useState(false)
 
     useEffect(()=>{
@@ -53,6 +53,7 @@ export default function head(){
 
       const logout=()=>{
         auth.signOut();
+        setRate(false)
         Alert.alert('You have signout')
         navigation.navigate('login');
         setlogin(false);
@@ -145,30 +146,8 @@ export default function head(){
       color={"#FFFFFF"}
       size={22}
       onPress={handlecart}
-    />   
-    {count.length > 0 ? (
-      <View
-        style={{
-          position: 'absolute',
-          backgroundColor: 'skyblue',
-          width: 16,
-          height: 16,
-          borderRadius: 15 / 2,
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}>
-        <Text
-          style={{
-            alignItems: 'center',
-            justifyContent: 'center',
-            color: "#FFFFFF",
-            fontSize: 10,
-          }}>
-          {count.length}
-        </Text>
+    />       
       </View>
-    ) : null}      
-        </View>
       </View>
     }
   />

@@ -7,11 +7,12 @@ import Head from "./header";
 import Rating from './rating'
 import { auth,database } from '../config/firebase';
 export default function Dinner({navigation}) {
-  const {data}=useCard()
+  const {data,rate,setRate}=useCard();
 
   const handleaddtocart = (product) => {
     auth.onAuthStateChanged((user) => {
       if (user) {
+        setRate(true)
         const key=database.ref("/Food").push().key;
    database.ref("/Food").child('orders/'+auth.currentUser.uid).child(key).update({
        key:key,
@@ -28,18 +29,16 @@ export default function Dinner({navigation}) {
         })
       }
        else {
+        setRate(false)
         navigation.navigate('login');
       }
     });
   };
-
-  
-
-      const food= data.filter(data => data.type === "Dinner");
+const food= data.filter(data => data.type === "Dinner");
       console.log('food',food)
     return (
         <>
- <Head/>
+        <Head/>
         <View style={styles.container}>
             <ScrollView>
         <View style={styles.main}>
@@ -54,7 +53,7 @@ export default function Dinner({navigation}) {
                     <Card.Image style={{ borderRadius: 10, width: 250,height:200 }} source={{uri:item.imageURL}}></Card.Image>
                     <Text style={styles.description}>Description: {item.description}</Text>
                     <Text style={styles.price}>Price: {item.price} PKR</Text>
-                    <Rating/>
+                    {rate===true?<><Text>Rating: 3.5</Text><Rating/></>:<Text>Rating: 3.5</Text>}
                     <Button
                         buttonStyle={{ borderRadius: 10, marginTop: 10 }}
                         title='AddtoCart'
@@ -63,10 +62,7 @@ export default function Dinner({navigation}) {
                 </Card>
                )
            })}
-       
-           
-      
-        </View>
+</View>
         </ScrollView>
         </View>
         </>
