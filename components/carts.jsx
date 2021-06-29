@@ -10,7 +10,7 @@ export default function ({navigation}) {
 
     const [data, setdata] = useState([]);
     let [totalPrice, setPrice] = useState(0);
-    const {total,setTotal}=useCard();
+    const {total,setTotal,theme}=useCard();
     let i = 0;
     const datahandler=()=>{
         database.ref("/Food").child('orders/' + auth.currentUser.uid).on('value', snapshot => {
@@ -76,7 +76,7 @@ if(data.length>0){
                 <ScrollView>
                     <Head/>
                     <View style={styles.main}>
-                        <Text style={styles.breakfast}>Carts</Text>
+                        <Text style={theme===false?styles.breakfast:styles.breakfasttheme}>Carts</Text>
                         {data.map((item,index)=>{
                             return(
                                 <Card
@@ -165,6 +165,11 @@ const styles = StyleSheet.create({
         marginTop: 20,
         marginBottom: 10,
     },
+    breakfasttheme:{
+        color:'#fff',
+        fontSize:30,
+        textDecorationLine:'underline',  
+      },
     description:{
         width:250,
       }

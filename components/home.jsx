@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
-import { View, StyleSheet } from "react-native";
-import { Card, Button } from "react-native-elements";
+import React, {useEffect} from "react";
+import {View,StyleSheet} from "react-native";
+import { Card, Button} from "react-native-elements";
 import { ScrollView } from "react-native-gesture-handler";
 import Head from "./header";
 import { useCard } from "../config/context";
@@ -9,8 +9,7 @@ import ToggleSwitch from "toggle-switch-react-native";
 import Rating from "./rating";
 
 export default function Home({ navigation }) {
-  const { data, setdata, rate, setRate, theme, setTheme } = useCard();
-  const [login, setLogin] = useState(false);
+  const { setdata, rate, setRate, theme, setTheme } = useCard();
 
   useEffect(() => {
     database
@@ -58,6 +57,7 @@ export default function Home({ navigation }) {
           size="medium"
           onToggle={() => toggle()}
         />
+
         </View>
             <Card
               containerStyle={{
