@@ -74,6 +74,7 @@ if(data.length>0){
         <>
             <View style={styles.container}>
                 <ScrollView>
+                    <Head/>
                     <View style={styles.main}>
                         <Text style={styles.breakfast}>Carts</Text>
                         {data.map((item,index)=>{

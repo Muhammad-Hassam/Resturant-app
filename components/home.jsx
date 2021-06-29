@@ -10,6 +10,7 @@ import Rating from './rating';
 
 export default function Home({navigation}) {
   const {data,setdata,rate,setRate}=useCard();
+  const [login,setLogin]=useState(false)
 
   useEffect(() => {
     database.ref("/Food").child('items').on('value', snapshot => {
@@ -20,6 +21,15 @@ export default function Home({navigation}) {
       setdata([])
       }
     })
+    auth.onAuthStateChanged((user)=>{
+        if(user){
+          setRate(true);
+        }
+        else{
+            setRate(false);
+        }
+    })
+
 }, [])
     const handlebreakfast = () => {
         
@@ -31,9 +41,6 @@ export default function Home({navigation}) {
     const handleDinner= () => {
             navigation.navigate('Dinner')
     }
-   
-
-
     return (
         <>
   <Head/>
@@ -42,46 +49,42 @@ export default function Home({navigation}) {
         <View style={styles.main}>
           
             <Card 
-            containerStyle={{ paddingTop:20, paddingBottom:20,borderRadius:15 }} >
+            containerStyle={{ paddingTop:20, paddingBottom:20,borderRadius:15,elevation:10 }} >
                 <Card.Title>Breakfast</Card.Title>
                 <Card.Divider />
                 <Card.Image style={{ borderRadius: 10, width: 260,height:260 }} source={require('../assets/breakfast2.jpg')}></Card.Image>
-                {rate===true?<Rating/>:<Text>Rating: 3.5</Text>}
+                <Rating uid={rate===true?auth.currentUser.uid:null} pid='breakfast'/>
                 <Button
                     buttonStyle={{ borderRadius: 10, marginTop: 10 }}
-                    title='Order Now'
+                    title='Menu'
                     onPress={handlebreakfast} 
                     />
             </Card>
-         
             <Card 
-             containerStyle={{ paddingTop:20, paddingBottom:20,borderRadius:15 }} >
+             containerStyle={{ paddingTop:20,marginTop:30, paddingBottom:20,borderRadius:15,elevation:10}} >
                 <Card.Title>Lunch</Card.Title>
                 <Card.Divider />
                 <Card.Image style={{ borderRadius: 10, width: 260,height:260 }} source={require('../assets/lunch2.jpg')}></Card.Image>
-                {rate===true?<Rating/>:<Text>Rating: 3.5</Text>}
+                <Rating uid={rate===true?auth.currentUser.uid:null} pid='lunch'/>
+
                 <Button
                     buttonStyle={{ borderRadius: 10, marginTop: 10  }}
-                    title='Order Now'
+                    title='Menu'
                     onPress={handleLunch}
                     /> 
             </Card>
             <Card 
-             containerStyle={{ paddingTop:20, paddingBottom:20, paddingLeft: 10, paddingRight:10,borderRadius:15, marginBottom:70 }} >
+             containerStyle={{ paddingTop:25,marginTop:30, paddingBottom:20, paddingLeft: 10,elevation:10, paddingRight:10,borderRadius:15, marginBottom:80 }} >
                 <Card.Title>Dinner</Card.Title>
                 <Card.Divider />
                 <Card.Image style={{ borderRadius: 10, width: 260,height:260 }} source={require('../assets/dinner2.jpg')}></Card.Image>
-                {rate===true?<Rating/>:<Text>Rating: 3.5</Text>}
+                <Rating uid={rate===true?auth.currentUser.uid:null} pid='dinner'/>
                 <Button
                     buttonStyle={{ borderRadius: 10, marginTop: 10  }}
-                    title='Order Now'
+                    title='Menu'
                     onPress={handleDinner}
                     />
-                    
             </Card>
-           
-          
-      
         </View>
         </ScrollView>
 

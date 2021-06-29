@@ -10,7 +10,6 @@ export default function head(){
     const [count,setcount]=useState([])
     const {user,setUser,rate,setRate}=useCard();
     const [login,setlogin]=useState(false)
-
     useEffect(()=>{
       auth.onAuthStateChanged((user)=>{
         if(user){
@@ -56,10 +55,9 @@ export default function head(){
         setRate(false)
         Alert.alert('You have signout')
         navigation.navigate('login');
-        setlogin(false);
       }
 
-      if(login===true){
+      if(rate===true){
         return(
           <Header
           style={{paddingTop:30}}

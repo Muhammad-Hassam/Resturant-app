@@ -4,9 +4,11 @@ export const cardContext = createContext(null);
 export const useCard = () => useContext(cardContext);
 export const CardProvider = ({ children }) => {
   const [user, setUser] = useState(false);
-  const [data,setdata]=useState([])
-  const [total,setTotal]=useState(0)
-  const [rate,setRate]=useState(false)
+  const [data,setdata]=useState([]);
+  const [total,setTotal]=useState(0);
+  const [rate,setRate]=useState(false);
+  const [productId,setProductid]=useState("");
+  const [userid,setUserid]=useState("");
 
   
 useEffect(() => {
@@ -26,6 +28,10 @@ useEffect(() => {
     data:data,
     total:total,
     rate:rate,
+    productId:productId,
+    userid:userid,
+    setProductid,
+    setUserid,
     setRate,
     setTotal,
     setdata,

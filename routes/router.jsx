@@ -1,5 +1,5 @@
-import React from "react";
-import { NavigationContainer } from "@react-navigation/native";
+import React,{useState} from "react";
+import { NavigationContainer,DefaultTheme } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import Home from "../components/home";
 import Signup from "../components/signup";
@@ -22,8 +22,17 @@ import Orderdetails from '../components/ordersdetail';
 const Stack=createStackNavigator();
 
 export default function Navigations(){
+const [theme,settheme]=useState(false)
+    const MyTheme = {
+        ...DefaultTheme,
+        colors: {
+          ...DefaultTheme.colors,
+          background: '#000',
+        },
+      };
+
     return (
-        <NavigationContainer>
+        <NavigationContainer theme={theme===true?MyTheme:DefaultTheme}>
             <Stack.Navigator>
             <Stack.Screen name="home" component={Home} options={{headerShown: false,}}/>
             <Stack.Screen name="login" component={Login} options={{headerShown: false,}}/>
