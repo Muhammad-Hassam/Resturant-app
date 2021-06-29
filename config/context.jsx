@@ -9,7 +9,7 @@ export const CardProvider = ({ children }) => {
   const [rate,setRate]=useState(false);
   const [productId,setProductid]=useState("");
   const [userid,setUserid]=useState("");
-
+  const [theme,setTheme]=useState(false)
   
 useEffect(() => {
     auth.onAuthStateChanged((user) => {
@@ -30,6 +30,8 @@ useEffect(() => {
     rate:rate,
     productId:productId,
     userid:userid,
+    theme:theme,
+    setTheme,
     setProductid,
     setUserid,
     setRate,

@@ -5,14 +5,12 @@ import 'react-native-gesture-handler';
 import Navigations from './routes/router';
 import {CardProvider} from './config/context';
 import { ThemeProvider,Text } from 'react-native-elements';
-// import { useColorScheme } from 'react-native-appearance';
 LogBox.ignoreLogs(['Setting a timer']);
 
 // https://www.npmjs.com/package/@agaweb/react-native-stripe
 
 
 export default function App() {
-  // let colorScheme = useColorScheme();
   const theme = {
     colors: {
       primary:'#d70b65',

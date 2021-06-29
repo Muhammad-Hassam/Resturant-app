@@ -19,10 +19,12 @@ import Adminorders from '../components/adminoorders';
 import Kitchenmanager from '../components/kitchenmanager';
 import Rider from '../components/rider'
 import Orderdetails from '../components/ordersdetail';
+import { useCard } from "../config/context";
 const Stack=createStackNavigator();
 
 export default function Navigations(){
-const [theme,settheme]=useState(false)
+  const {theme} = useCard();
+
     const MyTheme = {
         ...DefaultTheme,
         colors: {

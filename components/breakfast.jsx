@@ -7,7 +7,7 @@ import { auth,database } from '../config/firebase';
 import Head from "./header";
 import Rating from './rating';
 export default function Dinner({navigation}) {
-  const {data,rate,setRate}=useCard()
+  const {data,rate,setRate,theme}=useCard()
 
 
   const handleaddtocart = (product) => {
@@ -44,7 +44,7 @@ export default function Dinner({navigation}) {
         <View style={styles.container}>
             <ScrollView>
         <View style={styles.main}>
-          <Text style={styles.breakfast}>Breakfast</Text>
+          <Text style={theme===false?styles.breakfast:styles.breakfasttheme}>Breakfast</Text>
            {food.map((item,index)=>{
                return(
                 <Card 
@@ -86,6 +86,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     },
     breakfast:{
+      fontSize:30,
+      textDecorationLine:'underline',  
+    },
+    breakfasttheme:{
+      color:'#fff',
       fontSize:30,
       textDecorationLine:'underline',  
     },

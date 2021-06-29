@@ -7,7 +7,7 @@ import Head from "./header";
 import Rating from './rating'
 import { auth,database } from '../config/firebase';
 export default function Dinner({navigation}) {
-  const {data,rate,setRate}=useCard();
+  const {data,rate,setRate,theme}=useCard();
   const handleaddtocart = (product) => {
     auth.onAuthStateChanged((user) => {
       if (user) {
@@ -41,7 +41,7 @@ const food= data.filter(data => data.type === "Dinner");
         <View style={styles.container}>
             <ScrollView>
         <View style={styles.main}>
-          <Text style={styles.breakfast}>Dinner</Text>
+          <Text style={theme===false?styles.breakfast:styles.breakfasttheme}>Dinner</Text>
            {food.map((item,index)=>{
                return(
                 <Card 
@@ -80,6 +80,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     },
     breakfast:{
+      fontSize:30,
+      textDecorationLine:'underline',  
+    },
+    breakfasttheme:{
+      color:'#fff',
       fontSize:30,
       textDecorationLine:'underline',  
     },
