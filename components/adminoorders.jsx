@@ -1,16 +1,17 @@
 import React from 'react';
-import { View, StyleSheet, StatusBar ,Text, TouchableOpacity} from 'react-native'
+import { View, StyleSheet, Text, TouchableOpacity} from 'react-native'
 import { ListItem , Button} from 'react-native-elements'
 import { ScrollView } from 'react-native-gesture-handler';
 import Head from './header'
-import { auth, database } from "../config/firebase";
+import { database } from "../config/firebase";
 import { useEffect,useState } from 'react';
+import {useCard} from '../config/context';
 
 export default function Adminorders({navigation}) {
    
   const [data,setdata]=useState({})
   const [allOrders,setALlOrders]=useState([])
-
+  const {theme}=useCard();
 useEffect(()=>{
   database.ref('/Food').child('Orders').on('value',snapshot=>{
     let temp=[]
@@ -41,7 +42,7 @@ const handleupdate=(data)=>{
         <View style={styles.container}>
             <ScrollView>
         <View>
-          <Text style={styles.breakfast}>Recent Orders</Text>
+          <Text style={theme===false?styles.breakfast:styles.breakfasttheme}>Recent Orders</Text>
       {allOrders.map((prod,index)=>(
       <ListItem style={{marginTop:20}} key={index}>
                   <View style={{ flexDirection: "row",flexWrap: "wrap"}} >
@@ -95,11 +96,16 @@ const styles = StyleSheet.create({
       textAlign:'center',
       marginTop:20, 
     },
+    breakfasttheme:{
+      color:'#fff',
+      fontSize:30,
+      textDecorationLine:'underline',  
+    },
     price:{
        textAlign:'left',
        marginTop:20,
        marginBottom:10,
-    }
+    },
     
    
 });

@@ -60,14 +60,10 @@ export default function Home({ navigation }) {
 
         </View>
             <Card
-              containerStyle={{
-                paddingTop: 20,
-                paddingBottom: 20,
-                borderRadius: 15,
-                elevation: 10,
-              }}
+              containerStyle={theme===false?styles.cardbefore:styles.cardafter}
+
             >
-              <Card.Title>Breakfast</Card.Title>
+              <Card.Title style={theme===false?styles.txtbefore:styles.txtclrafter}>Breakfast</Card.Title>
               <Card.Divider />
               <Card.Image
                 style={{ borderRadius: 10, width: 260, height: 260 }}
@@ -84,15 +80,9 @@ export default function Home({ navigation }) {
               />
             </Card>
             <Card
-              containerStyle={{
-                paddingTop: 20,
-                marginTop: 30,
-                paddingBottom: 20,
-                borderRadius: 15,
-                elevation: 10,
-              }}
+              containerStyle={theme===false?styles.cardbefore:styles.cardafter}
             >
-              <Card.Title>Lunch</Card.Title>
+              <Card.Title style={theme===false?styles.txtbefore:styles.txtclrafter}>Lunch</Card.Title>
               <Card.Divider />
               <Card.Image
                 style={{ borderRadius: 10, width: 260, height: 260 }}
@@ -110,18 +100,10 @@ export default function Home({ navigation }) {
               />
             </Card>
             <Card
-              containerStyle={{
-                paddingTop: 25,
-                marginTop: 30,
-                paddingBottom: 20,
-                paddingLeft: 10,
-                elevation: 10,
-                paddingRight: 10,
-                borderRadius: 15,
-                marginBottom: 120,
-              }}
+                containerStyle={theme===false?styles.cardbefore:styles.cardafter}
+
             >
-              <Card.Title>Dinner</Card.Title>
+              <Card.Title style={theme===false?styles.txtbefore:styles.txtclrafter}>Dinner</Card.Title>
               <Card.Divider />
               <Card.Image
                 style={{ borderRadius: 10, width: 260, height: 260 }}
@@ -150,4 +132,26 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
+  cardafter:{
+    paddingTop: 20,
+    marginTop: 30,
+    paddingBottom: 20,
+    borderRadius: 15,
+    elevation: 10,
+    backgroundColor:'#333',
+  },
+  cardbefore:{
+    paddingTop: 20,
+    marginTop: 30,
+    paddingBottom: 20,
+    borderRadius: 15,
+    elevation: 10,    
+  },
+  txtclrafter:{
+    color:'#fff',
+  },
+  txtbefore:{
+    color:'#000'
+  },
+
 });

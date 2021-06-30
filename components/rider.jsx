@@ -5,9 +5,11 @@ import { ScrollView } from 'react-native-gesture-handler';
 import Head from './header'
 import { database } from "../config/firebase";
 import { useEffect, useState } from 'react';
+import {useCard} from '../config/context';
+
 
 export default function Adminorders({ navigation }) {
-
+  const {theme}=useCard();
   const [data, setdata] = useState({})
   const [allOrders, setALlOrders] = useState([])
 
@@ -44,7 +46,7 @@ export default function Adminorders({ navigation }) {
       <View style={styles.container}>
         <ScrollView>
           <View>
-            <Text style={styles.breakfast}>Kitchen Orders</Text>
+            <Text style={theme===false?styles.breakfast:styles.breakfasttheme}>Rider Orders</Text>
             {alldata.map((prod, index) => (
               <ListItem style={{ marginTop: 20 }} key={index}>
                 <View style={{ flexDirection: "row", flexWrap: "wrap" }} >
@@ -87,12 +89,18 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  breakfast: {
-    fontSize: 30,
-    textDecorationLine: 'underline',
-    textAlign: 'center',
-    marginTop: 20,
+  breakfast:{
+    fontSize:30,
+    textDecorationLine:'underline', 
+    textAlign:'center',
+    marginTop:20, 
   },
+    breakfasttheme:{
+      color:'#fff',
+      fontSize:30,
+    textAlign:'center',
+      textDecorationLine:'underline',  
+    },
   price: {
     textAlign: 'left',
     marginTop: 20,

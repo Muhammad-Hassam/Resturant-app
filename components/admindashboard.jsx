@@ -14,7 +14,7 @@ import Head from './header'
 
 export default function Admindashboard({navigation}) {
  const [count,setcount]=useState(0)
- const {user,setUser}=useCard();
+ const {theme}=useCard();
 
     const handleadditems = () => {
         navigation.navigate('Additem')
@@ -46,7 +46,7 @@ export default function Admindashboard({navigation}) {
 
             <ScrollView>
         <View style={styles.main}>
-          <Text style={{fontSize:35,textDecorationLine:"underline"}}>Admin Dashboard</Text>
+          <Text style={theme===false?styles.breakfast:styles.breakfasttheme}>Admin Dashboard</Text>
           <Card 
             containerStyle={{  paddingTop:20, paddingBottom:20,borderRadius:15 }} >
                 <Card.Title>All Items</Card.Title>
@@ -91,13 +91,24 @@ export default function Admindashboard({navigation}) {
     );
 }
 const styles = StyleSheet.create({
- 
+
     main: {
       marginTop:20,
       marginBottom:20,
      alignItems: 'center',
     justifyContent: 'center',
     },
+    breakfast:{
+        fontSize:30,
+        textDecorationLine:'underline', 
+        textAlign:'center',
+        marginTop:20, 
+      },
+      breakfasttheme:{
+        color:'#fff',
+        fontSize:30,
+        textDecorationLine:'underline',  
+      },
     
    
 });

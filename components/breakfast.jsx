@@ -49,8 +49,8 @@ export default function Dinner({navigation}) {
                return(
                 <Card 
                 key={index}
-                containerStyle={{ paddingTop:20, paddingBottom:20,elevation:10,marginTop:30, paddingLeft: 10, paddingRight:10,borderRadius:15}} >
-                    <Card.Title>{item.name}</Card.Title>
+                containerStyle={theme===false?styles.cardbefore:styles.cardafter}>
+                    <Card.Title style={theme===false?styles.txtbefore:styles.txtclrafter}>{item.name}</Card.Title>
                     <Card.Divider />
                     <Card.Image style={{ borderRadius: 10, width: 250,height:200 }} source={{uri:item.imageURL}}></Card.Image>
                     <Text style={styles.description}>Description: {item.description}</Text>
@@ -102,5 +102,29 @@ const styles = StyleSheet.create({
     description:{
       width:250,
       marginTop:20
-    }  
+    },  cardafter:{
+      paddingTop:20, 
+      paddingBottom:20,
+      elevation:10,
+      marginTop:30,
+      paddingLeft: 10,
+      paddingRight:10,
+      borderRadius:15 ,
+      backgroundColor:'#333',
+    },
+    cardbefore:{
+      paddingTop:20, 
+      paddingBottom:20,
+      elevation:10,
+      marginTop:30,
+      paddingLeft: 10,
+      paddingRight:10,
+      borderRadius:15   
+    },
+    txtclrafter:{
+      color:'#fff',
+    },
+    txtbefore:{
+      color:'#000'
+    },  
 });
